@@ -9,13 +9,8 @@ World::World(sf::RenderWindow & window):
     worldView_(window.getDefaultView()),
     worldBounds_(0.f, 0.f, worldView_.getSize().x, worldView_.getSize().y),
     spawnPos_(worldView_.getSize().x / 2, worldView_.getSize().y - 100),
-    isMovingDown(false),
-    isMovingLeft(false),
-    isMovingRight(false),
-    isMovingUp(false),
     player_(nullptr),
-    java_(nullptr),
-    playerSpeed(200.f)
+    java_(nullptr)
 {
     loadTextures();
     buildScene();
@@ -68,17 +63,6 @@ void World::buildScene(){
 
 
 void World::update(sf::Time dt){
-//    sf::Vector2f velocity(0.f, 0.f);
-//    if(isMovingUp)
-//        velocity.y -= playerSpeed;
-//    if(isMovingDown)
-//        velocity.y += playerSpeed;
-//    if(isMovingRight)
-//        velocity.x += playerSpeed;
-//    if(isMovingLeft)
-//        velocity.x -= playerSpeed;
-//    player_->setVelocity(velocity);
-
     sf::Vector2f position = java_->getPosition();
     sf::Vector2f velocity = java_->getVelocity();
     if(position.x > worldBounds_.width - 217 || position.x < 0){

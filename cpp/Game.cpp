@@ -17,9 +17,9 @@ void Game::run(){
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
     while(window_.isOpen()){
         timeSinceLastUpdate += clock.restart();
-        processPlayerInput();
         while (timeSinceLastUpdate > timePerFrame_){
             timeSinceLastUpdate -= timePerFrame_;
+            processPlayerInput();
             world_.update(timePerFrame_);
         }
         render();
@@ -29,20 +29,6 @@ void Game::run(){
 
 
 void Game::processPlayerInput(){
-//    sf::Event event;
-//    while (window_.pollEvent(event)){
-//        switch (event.type){
-//            case sf::Event::KeyPressed:
-//                handlePlayerInput(event.key.code, true);
-//                break;
-//            case sf::Event::KeyReleased:
-//                handlePlayerInput(event.key.code, false);
-//                break;
-//            case sf::Event::Closed:
-//                window_.close();
-//                break;
-//        }
-//    }
     sf::Event event;
     while(window_.pollEvent(event))
         if(event.type == sf::Event::Closed)
