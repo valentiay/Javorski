@@ -2,16 +2,22 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../game">
-      <sourceFolder url="file://$MODULE_DIR$/hpp/World.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/hpp/Command.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/hpp/SceneGraph.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/hpp/ResourceHolder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/hpp/SceneGraph.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/hpp/Game.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/hpp/Game.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/hpp/Action.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/hpp/World.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/hpp/Player.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../game/cmake_modules/FindSFML.cmake" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/cpp/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cpp/Game.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/cpp/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/cpp/World.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/cpp/SceneGraph.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/cpp/Action.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/cpp/World.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/cpp/Player.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/cpp/SceneGraph.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/cpp/Command.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../game/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

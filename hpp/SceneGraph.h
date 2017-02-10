@@ -6,6 +6,7 @@
 #define GAME_SCENENODE_H
 
 #include "SFML/Graphics.hpp"
+#include "Command.h"
 
 class SceneNode: public sf::Transformable,
                  public sf::Drawable,
@@ -15,11 +16,17 @@ public:
     typedef std::unique_ptr<SceneNode> NodePtr;
 
 
+                SceneNode();
+
+
     void        attachChild(NodePtr child);
 
     NodePtr     detatchChild(const SceneNode & node);
 
+
     void        update(sf::Time dt);
+
+    void        onCommand(const Command & command, sf::Time);
 
 private:
 
@@ -36,6 +43,10 @@ private:
     SceneNode *             father_;
 
     std::vector<NodePtr>    children_;
+
+protected:
+
+    Category::Type          category_;
 
 };
 
@@ -56,6 +67,10 @@ public:
 
 
     sf::Vector2f    getVelocity() const;
+
+
+    // TODO: Remove, debug function
+    void            setCategory(Category::Type category);
 
 private:
 

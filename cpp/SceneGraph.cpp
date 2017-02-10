@@ -7,6 +7,12 @@
 
 /****************************SCENENODE*****************************************/
 
+SceneNode::SceneNode():
+    category_(Category::Type::Scene)
+{}
+
+
+
 void SceneNode::attachChild(NodePtr child){
     child->father_ = this;
     children_.push_back(std::move(child));
@@ -43,6 +49,16 @@ void SceneNode::draw(sf::RenderTarget & target, sf::RenderStates states) const{
     drawCurrent(target, states);
     for(const NodePtr & child : children_)
         child->draw(target, states);
+}
+
+
+
+void SceneNode::onCommand(const Command & command, sf::Time dt){
+    if(command.category & category_)
+        command.action(this, dt); // TODO: Check
+
+    for(const NodePtr & child : children_)
+        child->onCommand(command, dt);
 }
 
 
@@ -94,6 +110,12 @@ void Entity::drawCurrent(sf::RenderTarget & target,
 
 void Entity::updateCurrent(sf::Time dt){
     move(velocity_ * dt.asSeconds());
+}
+
+
+
+void Entity::setCategory(Category::Type category){
+    category_ = category;
 }
 
 /****************************SPRITENODE****************************************/

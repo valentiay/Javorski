@@ -7,6 +7,7 @@
 
 #include "ResourceHolder.h"
 #include "SceneGraph.h"
+#include "Command.h"
 
 class World : private sf::NonCopyable{
 public:
@@ -19,6 +20,9 @@ public:
     void        draw();
 
 
+    CommandQueue &      getCommandQueue();
+
+
     bool        isMovingUp;
 
     bool        isMovingLeft;
@@ -26,6 +30,7 @@ public:
     bool        isMovingDown;
 
     bool        isMovingRight;
+
 
     float       playerSpeed;
 
@@ -62,6 +67,10 @@ private:
     sf::FloatRect                       worldBounds_;
 
     sf::Vector2f                        spawnPos_;
+
+
+    CommandQueue                        commandQueue_;
+
 };
 
 

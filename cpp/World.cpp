@@ -51,6 +51,7 @@ void World::buildScene(){
     std::unique_ptr<Entity> kitten(
             new Entity(textures_.get(Textures::ID::Floor)));
     kitten->setPosition(100.f, 100.f);
+    kitten->setCategory(Category::Type::Kitten);
     player_ = kitten.get();
     layers_[Characters]->attachChild(std::move(kitten));
                                   // ^ CLion is lying
@@ -59,6 +60,7 @@ void World::buildScene(){
             new Entity(textures_.get(Textures::ID::Player)));
     java->setPosition(300.f, 300.f);
     java->setVelocity(250.f, 250.f);
+    java->setCategory(Category::Type::Java);
     java_ = java.get();
     layers_[Characters]->attachChild(std::move(java));
 }
@@ -66,19 +68,19 @@ void World::buildScene(){
 
 
 void World::update(sf::Time dt){
-    sf::Vector2f velocity(0.f, 0.f);
-    if(isMovingUp)
-        velocity.y -= playerSpeed;
-    if(isMovingDown)
-        velocity.y += playerSpeed;
-    if(isMovingRight)
-        velocity.x += playerSpeed;
-    if(isMovingLeft)
-        velocity.x -= playerSpeed;
-    player_->setVelocity(velocity);
+//    sf::Vector2f velocity(0.f, 0.f);
+//    if(isMovingUp)
+//        velocity.y -= playerSpeed;
+//    if(isMovingDown)
+//        velocity.y += playerSpeed;
+//    if(isMovingRight)
+//        velocity.x += playerSpeed;
+//    if(isMovingLeft)
+//        velocity.x -= playerSpeed;
+//    player_->setVelocity(velocity);
 
     sf::Vector2f position = java_->getPosition();
-    velocity = java_->getVelocity();
+    sf::Vector2f velocity = java_->getVelocity();
     if(position.x > worldBounds_.width - 217 || position.x < 0){
         velocity.x = -velocity.x;
         java_->setVelocity(velocity);
@@ -88,6 +90,9 @@ void World::update(sf::Time dt){
         java_->setVelocity(velocity);
     }
 
+    while(!commandQueue_.isEmpty())
+        sceneGraph_.onCommand(commandQueue_.pop(), dt);
+
     sceneGraph_.update(dt);
 }
 
@@ -96,4 +101,10 @@ void World::update(sf::Time dt){
 void World::draw(){
     window_.setView(worldView_);
     window_.draw(sceneGraph_);
+}
+
+
+
+CommandQueue & World::getCommandQueue(){
+    return commandQueue_;
 }

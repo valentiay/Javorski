@@ -7,6 +7,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "World.h"
+#include "Player.h"
 
 class Game{
 public:
@@ -17,9 +18,7 @@ public:
 
 private:
 
-    void            processEvents();
-
-    void            handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+    void            processPlayerInput();
 
 
     void            render();
@@ -30,6 +29,8 @@ private:
     World               world_;
 
     sf::Time            timePerFrame_;
+
+    Player              player_;
 };
 
 #endif //GAME_GAME_H
